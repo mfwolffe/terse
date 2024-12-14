@@ -2,20 +2,155 @@
 @tailwind components;
 @tailwind utilities;
 
+/* TODO light-mode */
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
+
+  /* font sizes */
+  --tlargest: 8rem;
+  --tlarger: 7rem;
+  --tlarge: 5rem;
+  --tmed: 2rem;
+  --tnorm: 1rem;
+  --tsmall: 0.8rem;
+  --tsmaller: 0.6rem;
+  --tsmallest: 0.4rem;
+
+  /* pallete 2 */
+  --p2end: #FAAE7B;
+  --p2cls: #CC8B79;
+  --p2mid: #9F6976;
+  --p2les: #714674;
+  --p2lea: #432371;
+
+
+  /* pallete 3 */
+  --p3end: #F3F3F3;
+  --p3cls: #FF51EB;
+  --p3mid: #81DFD0;
+  --p3les: #D2BE97;
+  --p3lea: #58EFEC;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #4a4a4a;
+    --foreground: #f3f3f3;
+    --sideground: #9f9f9f;
+    --sub-ground: #c9c9c9;
+    --mid-ground: #747474;
   }
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Courier New", Courier, monospace;
+}
+
+h1 {
+  font-size: var(--tlarger);
+  color: var(--p2end);
+}
+h2 {
+  font-size: var(--tlarge);
+}
+h3 {
+  font-size: var(--tmed);
+}
+
+button[type=submit] {
+  background-color: var(--p2cls);
+  color: var(--background);
+
+}
+
+button[type=submit]:hover {
+  background-color: var(--p2les);
+  color: var(--sub-ground);
+}  
+
+
+.typewriter {
+  text-transform: none !important;
+  overflow: hidden;
+  border-right: 0.056em solid var(--p2les);
+  white-space: nowrap;
+  margin: 0;
+  letter-spacing: 0.08em;
+  animation: typing 1.2s steps(12, end), blink-caret 0.66s step-end infinite;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  15% {
+    border-color: var(--p3les);
+  }
+}
+
+.form-underline {
+  text-decoration-color: var(--p2mid);
+
+}
+
+.cursor {
+  animation: 1s blink step-end infinite;
+}
+@keyframes blink {
+  from,
+  to {
+    color: transparent;
+  }
+  50% {
+    color: #000;
+  }
+}
+@-moz-keyframes blink {
+  from,
+  to {
+    color: transparent;
+  }
+  50% {
+    color: #000;
+  }
+}
+@-webkit-keyframes blink {
+  from,
+  to {
+    color: transparent;
+  }
+  50% {
+    color: #000;
+  }
+}
+@-ms-keyframes blink {
+  from,
+  to {
+    color: transparent;
+  }
+  50% {
+    color: #000;
+  }
+}
+@-o-keyframes blink {
+  from,
+  to {
+    color: transparent;
+  }
+  50% {
+    color: #000;
+  }
 }
