@@ -1,11 +1,10 @@
-import { log } from "console";
 import { useCallback, useEffect, useState } from "react";
 
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faClock } from "@awesome.me/kit-361830ecc8/icons/duotone/light";
 
-const clock = <FontAwesomeIcon icon={faClock} shake />
+const clock = <FontAwesomeIcon icon={faClock} fontSize={14} shake />
  
 const Editor = () => {
   return (
@@ -114,20 +113,20 @@ const ComplaintRadio = ({ minutes=-1, setMinutes }) => {
 
 return (
       // TODO matt fix this lol (????)
-      <div className="w-3/5 ml-auto mr-auto text-center">
-        <label htmlFor="bedrooms-input" className="block mb-2 text-sm font-medium">Choose quantity:</label>
-        <div className="relative flex items-center max-w-[11rem] ml-auto mr-auto">
-            <button disabled={+minutes == 0} onClick={() => setMinutes(+minutes - 1)} type="button" id="decrement-button" data-input-counter-decrement="bedrooms-input" className="bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 border border-gray-300 rounded-s-lg p-3 h-11 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none">
+      <div className="w-4/5 ml-auto mr-auto text-center">
+        <label htmlFor="minutes-input" className="block mb-2 text-sm font-medium">Choose quantity:</label>
+        <div className="relative flex items-center max-w-[12rem] ml-auto mr-auto">
+            <button disabled={+minutes == 0} onClick={() => setMinutes(+minutes - 1)} type="button" id="decrement-button" data-input-counter-decrement="minutes-input" className="bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 border border-gray-300 rounded-s-lg p-3 h-11 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none">
                 <svg className="w-3 h-3 text-gray-900 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 2">
                     <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 1h16"/>
                 </svg>
             </button>
-            <input onChange={(e) => handleMinutesChange(e)} value={minutes} type="text" id="bedrooms-input" data-input-counter data-input-counter-min="1" data-input-counter-max="5" aria-describedby="helper-text-explanation" className="bg-gray-50 border-x-0 border-gray-300 h-11 font-medium text-center text-gray-900 text-sm focus:ring-blue-500 focus:border-red-300 block w-full pb-6 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-red-300" placeholder="" required />
+            <input onChange={(e) => handleMinutesChange(e)} value={minutes} type="text" id="minutes-input" data-input-counter data-input-counter-min="1" data-input-counter-max="5" aria-describedby="helper-text-explanation" className="bg-gray-50 border-x-0 border-gray-300 h-11 font-medium text-center text-gray-900 text-sm focus:ring-blue-500 focus:border-red-300 block w-full pb-6 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-red-300" placeholder="" required />
             <div className="absolute bottom-1 start-1/2 -translate-x-1/2 rtl:translate-x-1/2 flex items-center text-xs text-gray-400 space-x-1 rtl:space-x-reverse">
                 { clock }
                 <span>Minutes</span>
             </div>
-            <button onClick={() => setMinutes(+minutes + 1)} type="button" id="increment-button" data-input-counter-increment="bedrooms-input" className="bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 border border-gray-300 rounded-e-lg p-3 h-11 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none">
+            <button onClick={() => setMinutes(+minutes + 1)} type="button" id="increment-button" data-input-counter-increment="minutes-input" className="bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 border border-gray-300 rounded-e-lg p-3 h-11 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none">
                 <svg className="w-3 h-3 text-gray-900 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
                     <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 1v16M1 9h16"/>
                 </svg>
