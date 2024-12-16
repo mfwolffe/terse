@@ -1,0 +1,26 @@
+.typewriter {
+  display: inline-block;
+  font-family: monospace;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 0.15em solid orange;
+  animation: blink-caret 0.75s step-end infinite;
+}
+
+.cursor {
+  display: inline-block;
+  width: 10px;
+  background-color: black;
+  animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes blink-caret {
+  from { border-right-color: transparent; }
+  to { border-right-color: orange; }
+}

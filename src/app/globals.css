@@ -70,87 +70,8 @@ button[type=submit] {
 button[type=submit]:hover {
   background-color: var(--p2les);
   color: var(--sub-ground);
-}  
-
-
-.typewriter {
-  text-transform: none !important;
-  overflow: hidden;
-  border-right: 0.056em solid var(--p2les);
-  white-space: nowrap;
-  margin: 0;
-  letter-spacing: 0.08em;
-  animation: typing 1.2s steps(12, end), blink-caret 0.66s step-end infinite;
 }
 
-@keyframes typing {
-  from {
-    width: 0;
-  }
-  to {
-    width: 100%;
-  }
-}
-@keyframes blink-caret {
-  from,
-  to {
-    border-color: transparent;
-  }
-  15% {
-    border-color: var(--p3les);
-  }
-}
-
-.form-underline {
-  text-decoration-color: var(--p2mid);
-
-}
-
-.cursor {
-  animation: 1s blink step-end infinite;
-}
-@keyframes blink {
-  from,
-  to {
-    color: transparent;
-  }
-  50% {
-    color: #000;
-  }
-}
-@-moz-keyframes blink {
-  from,
-  to {
-    color: transparent;
-  }
-  50% {
-    color: #000;
-  }
-}
-@-webkit-keyframes blink {
-  from,
-  to {
-    color: transparent;
-  }
-  50% {
-    color: #000;
-  }
-}
-@-ms-keyframes blink {
-  from,
-  to {
-    color: transparent;
-  }
-  50% {
-    color: #000;
-  }
-}
-@-o-keyframes blink {
-  from,
-  to {
-    color: transparent;
-  }
-  50% {
-    color: #000;
-  }
+main {
+  width: 100vw;
 }

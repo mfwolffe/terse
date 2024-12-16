@@ -3,16 +3,18 @@
 import Head   from "next/head";
 import Image  from "next/image";
 
+import Typewriter     from "./components/Typewriter/Typewriter";
 import Transducer     from "./components/Transducer";
 import ComplaintForm  from "./components/ComplaintForm";
+
 
 import { Si1001Tracklists } from "react-icons/si";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub } from "@awesome.me/kit-361830ecc8/icons/classic/brands";
 
-const mattGH = <FontAwesomeIcon icon={faGithub} fontSize={20} />
-
 const mattIco = <Si1001Tracklists fontSize={20} />
+const mattGH  = <FontAwesomeIcon icon={faGithub} fontSize={20} />
+
 
 export default function Home() {
   return (
@@ -22,11 +24,7 @@ export default function Home() {
       </Head>
       <main className="flex flex-col gap-8 row-start-2  sm:items-start mt-0">
         <div className="ml-auto mr-auto text-center">
-          <div className="w-fit">
-            <h1 className="typewriter ml-auto mr-auto w-fit">
-              tldr?
-            </h1>
-          </div>
+          <Typewriter />
           <h3 className="w-10/12 ml-auto mr-auto mt-6">
             matt wrote you a long, roundabout email, didn't he?
           </h3>
@@ -57,7 +55,7 @@ export default function Home() {
           </p>
         </div>
 
-        <div className="flex-1 justify-center w-4/5  ml-auto mr-auto">
+        <div className="flex-1 justify-center w-1/2  ml-auto mr-auto">
           <ComplaintForm />
         </div>
 
