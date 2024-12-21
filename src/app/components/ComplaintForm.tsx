@@ -5,7 +5,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faClock } from "@awesome.me/kit-361830ecc8/icons/duotone/light";
 
 const clock = <FontAwesomeIcon icon={faClock} fontSize={14} shake />
- 
+
+interface ComplaintRadioProps {
+  minutes: number;
+  setMinutes: (minutes: number) => void;
+}
+
+
 const Editor = () => {
   return (
     <div className="w-full mb-4 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600">
@@ -93,15 +99,11 @@ const Editor = () => {
   )
 }
 
-const ComplaintRadio = ({ minutes=-1, setMinutes }) => {
-  const handleMinutesChange = (e) => {
+const ComplaintRadio: React.FC<ComplaintRadioProps> = ({ minutes=-1, setMinutes }) => {
+  const handleMinutesChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e) return;
 
-    const value = e.target.value;
-
-    console.log(`val ${value}`);
-    
-
+    const value = Number(e.target.value);
     if (value < 0) return;
 
     setMinutes(value);
@@ -144,9 +146,9 @@ export default function ComplaintForm() {
   const [editorVisible, setEditorVisible] = useState(false);
   const [submitDisabled, setSubmitDisabled] = useState(true);
 
-  function handleModeSelect(e) {
+  function handleModeSelect(e: React.ChangeEvent<HTMLSelectElement>) {
     if (!e) return;    
-    const value = e.target.value;
+    const value = Number(e.target.value);
     setMode(value);
   }
 
