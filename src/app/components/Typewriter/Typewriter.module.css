@@ -1,6 +1,7 @@
 .typewriter {
   display: inline-block;
-  font-family: monospace;
+  /* font-family: monospace; */
+  font-family: 'Ubuntu Mono';
   white-space: nowrap;
   overflow: hidden;
   border-right: 0.15em solid orange;

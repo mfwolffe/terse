@@ -13,6 +13,11 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      fontFamily: {
+        'ubuntu': ['Ubuntu', 'sans-serif'],
+        'ubuntu-mono': ['Ubuntu Mono', 'monospace'],
+        'source-code-pro': ['Source Code Pro', 'monospace'],
+      }
     },
   },
   plugins: [
