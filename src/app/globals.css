@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&family=Geist+Mono:wght@100..900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -67,7 +67,6 @@ h3 {
 button[type=submit] {
   background-color: var(--p2cls);
   color: var(--background);
-
 }
 
 button[type=submit]:hover {
@@ -77,5 +76,6 @@ button[type=submit]:hover {
 
 main {
   width: 100vw;
+  font-family: 'Cabin';
 }
 

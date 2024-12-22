@@ -1,7 +1,7 @@
 .typewriter {
   display: inline-block;
   /* font-family: monospace; */
-  font-family: 'Ubuntu Mono';
+  font-family: 'Source Code Pro';
   white-space: nowrap;
   overflow: hidden;
   border-right: 0.15em solid orange;
