@@ -93,7 +93,7 @@ const Editor = () => {
     </div>
     <div className="px-4 py-2 bg-white rounded-b-lg dark:bg-gray-800">
       <label htmlFor="editor" className="sr-only">Publish post</label>
-      <textarea id="editor" rows={8} className="block w-full px-0 text-sm text-gray-800 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400" placeholder="Write an article..." required ></textarea>
+      <textarea id="editor" rows={8} className="block w-full px-0 text-sm text-gray-800 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400" placeholder="roast me" required ></textarea>
     </div>
   </div>
   )
@@ -104,7 +104,7 @@ const ComplaintSelect: React.FC<ComplaintRadioProps> = ({ minutes=-1, setMinutes
     if (!e) return;
 
     const value = Number(e.target.value);
-    if (value < 0) return;
+    if (isNaN(value) || value < 0) return;
 
     setMinutes(value);
   }
