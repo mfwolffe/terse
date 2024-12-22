@@ -1,7 +1,6 @@
 "use client"
 
 import Head   from "next/head";
-import Image  from "next/image";
 
 import Typewriter     from "./components/Typewriter/Typewriter";
 import Transducer     from "./components/Transducer";
@@ -45,11 +44,11 @@ export default function Home() {
             How does it work?
           </h3>
           <p>
-            Just fill out the form as you see fit!
+            <span className="text-amber-500 subpixel-antialiased">No form fields are required. </span>
+            Just fill it out as you see fit!
           </p>
           <p>
-            (i.e., <span className="text-amber-500 subpixel-antialiased">no form fields are required.
-            </span> if you want to provide <span className="subpixel-antialiased text-amber-500">tailored</span> feedback, you can select a different dropdown item
+            (If you want to give <span className="subpixel-antialiased text-amber-500">tailored</span> feedback, select a different dropdown item
             -
             <span className="subpixel-antialiased text-amber-500"> otherwise, just hit submit to update matt's records</span>)
           </p>
