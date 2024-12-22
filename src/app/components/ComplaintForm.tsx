@@ -99,7 +99,7 @@ const Editor = () => {
   )
 }
 
-const ComplaintRadio: React.FC<ComplaintRadioProps> = ({ minutes=-1, setMinutes }) => {
+const ComplaintSelect: React.FC<ComplaintRadioProps> = ({ minutes=-1, setMinutes }) => {
   const handleMinutesChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e) return;
 
@@ -206,7 +206,7 @@ export default function ComplaintForm() {
 
 
       { editorVisible && <Editor /> }
-      { mode == 4 && <ComplaintRadio minutes={minutes} setMinutes={setMinutes} /> }
+      { mode == 4 && <ComplaintSelect minutes={minutes} setMinutes={setMinutes} /> }
       <div className="ml-auto mr-auto w-100 flex justify-end">
         <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
           Submit
