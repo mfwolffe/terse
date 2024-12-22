@@ -195,12 +195,12 @@ export default function ComplaintForm() {
         </div>
 
         <label htmlFor="underline_select" className="sr-only"></label>
-        <select onChange={(e) => handleModeSelect(e)} defaultValue={"0"} id="underline_select" className="block py-2.5 px-0 w-2/5 ml-auto mr-auto text-sm text-slate-300 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 focus:outline-none focus:ring-0 focus:border-amber-500 peer ">
-          <option value="0">Feedback Type</option>
+        <select onChange={(e) => handleModeSelect(e)} defaultValue={"1"} id="underline_select" className="block py-2.5 px-0 w-2/5 ml-auto mr-auto text-sm text-slate-300 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 focus:outline-none focus:ring-0 focus:border-amber-500 peer ">
+          <option value="0" disabled>Feedback Type</option>
           <option value="1">Log it (for metrics!)</option>
           <option value="2">Suggest Revisions - you write them</option>
           <option value="3">Suggest Revisions - have an AI yell at me</option>
-          <option value="4">Complain - Just let  me know I wasted your time</option>
+          <option value="4">Complain - just let me know how much of your time I wasted</option>
         </select>
       </div>
 
