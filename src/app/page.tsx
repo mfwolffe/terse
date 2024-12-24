@@ -18,12 +18,11 @@ const mattGH  = <FontAwesomeIcon icon={faGithub} fontSize={20} />
 export default function Home() {
   return (
     <div className="grid grid-rows-[20px_1fr_20px] justify-items-center min-h-screen pb-20 font-[family-name:var(--font-geist-sans)]">
-      <Head>
-        <title id="title">terse</title>
-      </Head>
       <main className="flex flex-col gap-8 row-start-2  sm:items-start mt-0">
-        <div className="ml-auto mr-auto text-center">
+        <div className="ml-12 mr-auto text-left">
           <Typewriter />
+        </div>
+        <div className="ml-auto mr-auto text-center">
           <h3 className="w-10/12 ml-auto mr-auto mt-6">
             matt wrote you a long, roundabout email, didn't he?
           </h3>
