@@ -1,8 +1,11 @@
-import { useCallback, useEffect, useState } from "react";
+"use client";
 
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { useEffect, useState } from "react";
+import { affiliations } from "../data/data";
+import TimedTransducer from "./TimedTransducer/TimedTransducer";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClock } from "@awesome.me/kit-361830ecc8/icons/duotone/light";
+
 
 const clock = <FontAwesomeIcon icon={faClock} fontSize={14} shake />
 
@@ -10,7 +13,6 @@ interface ComplaintRadioProps {
   minutes: number;
   setMinutes: (minutes: number) => void;
 }
-
 
 const Editor = () => {
   return (
@@ -96,7 +98,7 @@ const Editor = () => {
       <textarea id="editor" rows={8} className="block w-full px-0 text-sm text-gray-800 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400" placeholder="roast me" required ></textarea>
     </div>
   </div>
-  )
+  );
 }
 
 const ComplaintSelect: React.FC<ComplaintRadioProps> = ({ minutes=-1, setMinutes }) => {
@@ -113,8 +115,7 @@ const ComplaintSelect: React.FC<ComplaintRadioProps> = ({ minutes=-1, setMinutes
     console.log(minutes);
   }, [minutes])
 
-return (
-      // TODO matt fix this lol (????)
+  return (
       <div className="w-4/5 ml-auto mr-auto text-center">
         <label htmlFor="minutes-input" className="block mb-2 text-sm font-medium">Choose quantity:</label>
         <div className="relative flex items-center max-w-[12rem] ml-auto mr-auto">
@@ -136,7 +137,7 @@ return (
         </div>
         <p id="helper-text-explanation" className="mt-2 text-sm">How many minutes of your time did I waste?</p>
       </div>
-)
+  );
 }
 
 export default function ComplaintForm() {
@@ -162,7 +163,7 @@ export default function ComplaintForm() {
         break;
       case 3:
         // TODO do ai thing
-      case 2:        
+      case 2:
         setEditorVisible(true);
         setSubmitDisabled(false);
         break;
@@ -180,7 +181,13 @@ export default function ComplaintForm() {
           <label htmlFor="floating_email" className="peer-focus:font-medium absolute text-sm text-slate-50 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-amber-500 peer-focus:dark:text-amber-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Email address</label>
         </div>
         <div className="relative z-0 w-full mb-5 group">
-          <input type="text" name="affiliation" id="affiliation" className="block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-amber-500 focus:outline-none focus:ring-0 focus:border-amber-500 peer form-underline" placeholder=" " required />
+          <input type="text" name="affiliation" id="affiliation" className="block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-amber-500 focus:outline-none focus:ring-0 focus:border-amber-500 peer form-underline" placeholder=" " data-tooltip-target="tooltip-affiliation" data-tooltip-placement="left" data-tooltip-trigger="click" required />
+          <div id="tooltip-affiliation" role="tooltip" data-tooltip-style="light"  className="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-1000 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+            i.e., where do we know each other from, like 
+            <TimedTransducer strings={affiliations} delay={1500} />
+            for instance
+            <div className="tooltip-arrow" data-popper-arrow></div>
+          </div>
           <label htmlFor="affiliation" className="peer-focus:font-medium absolute text-sm text-slate-50 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-amber-500 peer-focus:dark:text-amber-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Affiliation</label>
         </div>
         <div className="grid md:grid-cols-2 md:gap-6">
@@ -214,6 +221,5 @@ export default function ComplaintForm() {
       </div>
 
     </form>
-
-  )
+  );
 }
