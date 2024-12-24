@@ -1,9 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&family=Geist+Mono:wght@100..900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&family=Geist+Mono:wght@100..900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 
 /* TODO light-mode */
 
@@ -22,19 +21,18 @@
   --tsmallest: 0.4rem;
 
   /* pallete 2 */
-  --p2end: #FAAE7B;
-  --p2cls: #CC8B79;
-  --p2mid: #9F6976;
+  --p2end: #faae7b;
+  --p2cls: #cc8b79;
+  --p2mid: #9f6976;
   --p2les: #714674;
   --p2lea: #432371;
 
-
   /* pallete 3 */
-  --p3end: #F3F3F3;
-  --p3cls: #FF51EB;
-  --p3mid: #81DFD0;
-  --p3les: #D2BE97;
-  --p3lea: #58EFEC;
+  --p3end: #f3f3f3;
+  --p3cls: #ff51eb;
+  --p3mid: #81dfd0;
+  --p3les: #d2be97;
+  --p3lea: #58efec;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -64,18 +62,40 @@ h3 {
   font-size: var(--tmed);
 }
 
-button[type=submit] {
+button[type="submit"] {
   background-color: var(--p2cls);
   color: var(--background);
 }
 
-button[type=submit]:hover {
+button[type="submit"]:hover {
   background-color: var(--p2les);
   color: var(--sub-ground);
 }
 
 main {
   width: 100vw;
-  font-family: 'Source Sans 3';
+  font-family: "Source Sans 3";
 }
 
+.tooltip {
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.75);
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.875rem;
+  white-space: nowrap;
+}
+
+.tooltip[data-popper-reference-hidden] {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.tooltip[data-popper-reference-hidden] + .tooltip-arrow {
+  visibility: hidden;
+  opacity: 0;
+}
