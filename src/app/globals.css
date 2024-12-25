@@ -33,6 +33,12 @@
   --p3mid: #81dfd0;
   --p3les: #d2be97;
   --p3lea: #58efec;
+
+  /* form */
+  --form-valid: #55e13d;
+  --form-invalid: #fb7185;
+  --form-valid-muted: #68cc57;
+  --form-invalid-dim: #9f5c66;
 }
 
 @media (prefers-color-scheme: dark) {
