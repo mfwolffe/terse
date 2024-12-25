@@ -12,7 +12,7 @@ npm run dev
 
 Navigate to [http://localhost:3000](http://localhost:3000) in your browser to check out the site. Changes made to code reflect live in the browser upon save.
 
-Add your own twist(s) by modifying:
+Add your own twist(s) by modifying: (I added more components - this list is old. just check out the codebase)
 * `app/page.tsx` for main text content
 * `app/components/Transducer.tsx` for the randomized technobabble sentence
 * `app/components/ComplaintForm.tsx` for the form controls and their presentation
