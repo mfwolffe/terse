@@ -1,10 +1,9 @@
 "use client"
 
-import Head   from "next/head";
 
-import Typewriter     from "./components/Typewriter/Typewriter";
 import Transducer     from "./components/Transducer";
 import ComplaintForm  from "./components/ComplaintForm";
+import Typewriter     from "./components/Typewriter/Typewriter";
 
 
 import { Si1001Tracklists } from "react-icons/si";
@@ -18,15 +17,15 @@ const mattGH  = <FontAwesomeIcon icon={faGithub} fontSize={20} />
 export default function Home() {
   return (
     <div className="grid grid-rows-[20px_1fr_20px] justify-items-center min-h-screen pb-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2  sm:items-start mt-0">
-        <div className="ml-12 mr-auto text-left">
+      <main className="flex flex-col gap-8 row-start-2  sm:items-start mt-0 overflow-auto">
+        <div className="ml-12 mr-auto text-left" id="typewriter-container">
           <Typewriter />
         </div>
         <div className="ml-auto mr-auto text-center">
           <h3 className="w-10/12 ml-auto mr-auto mt-6">
             matt wrote you a long, roundabout email, didn't he?
           </h3>
-          <h3 className="ml-auto mr-auto mb-6">
+          <h3 className="ml-auto mr-auto mb-6 subpixel-antialiased" style={{color: "var(--p2end"}}>
             We're here to help
           </h3>
           <div className="mt-6">

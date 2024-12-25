@@ -63,7 +63,7 @@ const Typewriter: React.FC = () => {
       }
 
       else if (isDeleting) {
-        if (text === '') {
+        if (text === 't') {
           setIsDeleting(false);
           setIsTersing(true);
         }
@@ -96,7 +96,7 @@ const Typewriter: React.FC = () => {
 
   return (
     <div className='w-fit'>
-      <h1 className={styles.typewriter}>{text}<span className={styles.cursor}>|</span></h1>
+      <h1 id='ttt' className={styles.typewriter}>{text}<span className={styles.cursor}></span></h1>
     </div>
   );
 };

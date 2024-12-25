@@ -2,16 +2,21 @@
   display: inline-block;
   /* font-family: monospace; */
   font-family: 'Source Code Pro';
-  white-space: nowrap;
+  /* white-space: nowrap; */
+  white-space: normal;
   overflow: hidden;
-  border-right: 0.15em solid orange;
-  animation: blink-caret 0.75s step-end infinite;
+  /* border-right: 0.15em solid black; */
+  /* animation: blink-caret 0.75s step-end infinite; */
+  position: relative;
 }
 
 .cursor {
+  position: absolute;
+  right: 0;
   display: inline-block;
-  width: 10px;
+  width: 4px;
   background-color: black;
+  height: 100%;
   animation: blink 0.7s infinite;
 }
 
@@ -24,4 +29,68 @@
 @keyframes blink-caret {
   from { border-right-color: transparent; }
   to { border-right-color: orange; }
+}
+
+/* @media (max-width: 597px) {
+  .typewriter { 
+    font-size: 2.6rem;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+} */
+
+@media (max-width: 1920px) {
+  .typewriter { 
+    font-size: 5.2rem;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }  
+}
+
+@media (max-width: 1000px) {
+  .typewriter { 
+    font-size: 4.0rem;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }  
+}
+
+@media (max-width: 720px) {
+  .typewriter { 
+    font-size: 3.2rem;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .cursor {
+    position: static;
+    display: inline-block;
+    width: 2px;
+    background-color: black;
+    height: 1.4em;
+    vertical-align:bottom;
+    animation: blink 0.7s infinite;
+  }
+}
+
+@media (max-width: 598px) {
+  .typewriter { 
+    font-size: 2.6rem;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .cursor {
+    position: static;
+    display: inline-block;
+    width: 2px;
+    background-color: black;
+    height: 1.4em;
+    vertical-align:bottom;
+    animation: blink 0.7s infinite;
+  }
+  
+  #typewriter-container {
+    margin-left: 0 !important;
+  }
 }

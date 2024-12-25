@@ -99,3 +99,10 @@ main {
   visibility: hidden;
   opacity: 0;
 }
+
+@media (max-width: 598px) {
+  #typewriter-container {
+    margin-left: 0.8rem !important;
+  }
+}
+
