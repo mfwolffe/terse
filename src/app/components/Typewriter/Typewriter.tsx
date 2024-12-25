@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import styles from './Typewriter.module.css';
 
 const Typewriter: React.FC = () => {
-  const [text, setText] = useState('');                 // the string to render w/ typewriter effect
+  const [text, setText] = useState('t');                // the string to render w/ typewriter effect
   const [isTerse, setIsTerse] = useState(false);        // basically, are we done?
   const [isTyping, setIsTyping] = useState(true);       // are we typing to the intermediary?
   const [isTersing, setIsTersing] = useState(false);    // are we typing to the final string?
@@ -96,7 +96,7 @@ const Typewriter: React.FC = () => {
 
   return (
     <div className='w-fit'>
-      <h1 id='ttt' className={styles.typewriter}>{text}<span className={styles.cursor}></span></h1>
+      <h1 className={styles.typewriter}>{text}<span className={styles.cursor}></span></h1>
     </div>
   );
 };

@@ -25,7 +25,7 @@ export default function Home() {
           <h3 className="w-10/12 ml-auto mr-auto mt-6">
             matt wrote you a long, roundabout email, didn't he?
           </h3>
-          <h3 className="ml-auto mr-auto mb-6 subpixel-antialiased" style={{color: "var(--p2end"}}>
+          <h3 className="ml-auto mr-auto mt-4 mb-4 subpixel-antialiased" style={{color: "var(--p2end"}}>
             We're here to help
           </h3>
           <div className="mt-6">
