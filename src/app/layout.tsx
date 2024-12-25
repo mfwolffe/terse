@@ -31,6 +31,7 @@ export default function RootLayout({
       <Head>
         <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet" />
         <title id="title">terse</title>
+        <meta name="apple-mobile-web-app-title" content="terse" />
       </Head> 
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
