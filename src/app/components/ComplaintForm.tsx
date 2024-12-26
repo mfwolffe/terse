@@ -1,21 +1,39 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { affiliations } from "../data/data";
 import TimedTransducer from "./TimedTransducer/TimedTransducer";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import SuggestionList from "./UserFeedbackTable/UserFeedbackTable";
 import { faClock } from "@awesome.me/kit-361830ecc8/icons/duotone/light";
 
-const clock = <FontAwesomeIcon icon={faClock} fontSize={14} shake />
 
-interface ComplaintRadioProps {
+import { faSpaceStationMoonConstruction } from "@awesome.me/kit-361830ecc8/icons/duotone/solid";
+import { Button } from "flowbite-react";
+
+
+const clock     = <FontAwesomeIcon icon={faClock} fontSize={14} shake />
+const deathStar = <FontAwesomeIcon icon={faSpaceStationMoonConstruction} fade className="self-center mr-2" />
+
+interface ComplaintSelectProps {
   minutes: number;
   setMinutes: (minutes: number) => void;
 }
 
+interface InsultViewerProps {
+  insult: string;
+}
 
-const ComplaintSelect: React.FC<ComplaintRadioProps> = ({ minutes=-1, setMinutes }) => {
+const InsultViewer: React.FC<InsultViewerProps> = ({ insult }) => {
+  return (
+    <p className="text-4xl text-[var(--form-invalid)] text-center">
+      { insult }
+    </p>
+  )
+}
+
+
+const ComplaintSelect: React.FC<ComplaintSelectProps> = ({ minutes=-1, setMinutes }) => {
   const handleMinutesChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e) return;
 
@@ -27,7 +45,7 @@ const ComplaintSelect: React.FC<ComplaintRadioProps> = ({ minutes=-1, setMinutes
 
   useEffect(() => {
     console.log(minutes);
-  }, [minutes])
+  }, [minutes]);
 
   return (
       <div className="w-4/5 ml-auto mr-auto text-center">
@@ -54,12 +72,22 @@ const ComplaintSelect: React.FC<ComplaintRadioProps> = ({ minutes=-1, setMinutes
   );
 }
 
+const generateInsult = async () => {
+  let data = await fetch("https://insult.mattbas.org/api/insult");
+  console.log(`data: ${data}`);
+}
+
 export default function ComplaintForm() {
 
   const [mode, setMode] = useState(-1);
+  const [insult, setInsult] = useState('');
   const [minutes, setMinutes] = useState(-1);
+  const [waiting, setWaiting] = useState(false);
   const [editorVisible, setEditorVisible] = useState(false);
   const [submitDisabled, setSubmitDisabled] = useState(true);
+
+  
+  const handleInsultGen = useCallback(() => { setWaiting(true); }, []);
 
   function handleModeSelect(e: React.ChangeEvent<HTMLSelectElement>) {
     if (!e) return;    
@@ -69,7 +97,7 @@ export default function ComplaintForm() {
 
   useEffect(() => {
     switch (+mode) {
-      case 4:
+      case 5:
         setMinutes(3);
       case 1:
         setEditorVisible(false);
@@ -81,10 +109,36 @@ export default function ComplaintForm() {
         setEditorVisible(true);
         setSubmitDisabled(false);
         break;
+      case 4:
+        setEditorVisible(false);
+        setSubmitDisabled(false);
+        break;
       default:
         return;
     }
   }, [mode]);
+
+  useEffect(() => {
+    if (!waiting) return;
+
+    const grabInsult = async () => {
+      try {
+        const response  = await fetch("https://insult.mattbas.org/api/insult.json?who=matt%27s+writing");
+        const result    = await response.json();
+
+        setInsult(result.insult);
+      } catch (error) {
+        console.error('fetching insult:', error);
+      }
+    };
+
+    grabInsult();
+  }, [waiting]);
+
+  useEffect(() => {
+    if (!insult) return;
+    setWaiting(false);    
+  }, [insult]);
 
 
   return (
@@ -126,14 +180,18 @@ export default function ComplaintForm() {
           <option value="0" disabled>Feedback Type</option>
           <option value="1">Log it (for metrics!)</option>
           <option value="2">Suggest Revisions - you write them</option>
-          <option value="3">Suggest Revisions - have an AI yell at me</option>
-          <option value="4">Complain - just let me know how much of your time I wasted</option>
+          <option value="3">Suggest Revisions - have an AI make suggestions</option>
+          <option value="4">Complain - autogenerate a random insult for matt</option>
+          <option value="5">Complain - just let me know how much of your time I wasted</option>
         </select>
       </div>
 
 
       { editorVisible && <SuggestionList /> }
-      { mode == 4 && <ComplaintSelect minutes={minutes} setMinutes={setMinutes} /> }
+      {  mode === 5 && <ComplaintSelect minutes={minutes} setMinutes={setMinutes} /> }
+      {  mode === 4 && <Button className="ml-auto mr-auto flex items-center justify-center" onClick={handleInsultGen}>{ waiting && deathStar } Generate...</Button> }
+      { (mode === 4 && !!insult) && <div className="w-full mt-4 mb-2"><InsultViewer insult={insult} /></div> }
+
       <div className="ml-auto mr-auto w-100 flex justify-end">
         <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
           Submit
