@@ -39,8 +39,19 @@
   --form-invalid: #fb7185;
   --form-valid-muted: #68cc57;
   --form-invalid-dim: #9f5c66;
+
+
+  /* hovers? idk these need reorganizing */
+  --hover-pink-dark:  #9f5c66;
+  --hover-pink-light: #BC8A93;
+  --hover-text-dark:  #4a4a4a;
+  --hover-text-light: #fff;
+
+  --hover-pink-darker: #824A53;
+
 }
 
+/* TODO color scheme things * media queries */
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #4a4a4a;

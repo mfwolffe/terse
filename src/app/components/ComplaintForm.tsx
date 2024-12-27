@@ -1,7 +1,7 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
 import { affiliations } from "../data/data";
+import { useCallback, useEffect, useState } from "react";
 import TimedTransducer from "./TimedTransducer/TimedTransducer";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import SuggestionList from "./UserFeedbackTable/UserFeedbackTable";
@@ -12,8 +12,9 @@ import { faSpaceStationMoonConstruction } from "@awesome.me/kit-361830ecc8/icons
 import { Button } from "flowbite-react";
 
 
-const clock     = <FontAwesomeIcon icon={faClock} fontSize={14} shake />
-const deathStar = <FontAwesomeIcon icon={faSpaceStationMoonConstruction} fade className="self-center mr-2" />
+const clock             = <FontAwesomeIcon icon={faClock} fontSize={14} shake />
+const deathStarMini     = <FontAwesomeIcon icon={faSpaceStationMoonConstruction} fade className="self-center mr-2" />
+const deathStarNotMini  = <FontAwesomeIcon icon={faSpaceStationMoonConstruction} fade className="h-full" />
 
 interface ComplaintSelectProps {
   minutes: number;
@@ -72,11 +73,6 @@ const ComplaintSelect: React.FC<ComplaintSelectProps> = ({ minutes=-1, setMinute
   );
 }
 
-const generateInsult = async () => {
-  let data = await fetch("https://insult.mattbas.org/api/insult");
-  console.log(`data: ${data}`);
-}
-
 export default function ComplaintForm() {
 
   const [mode, setMode] = useState(-1);
@@ -104,7 +100,7 @@ export default function ComplaintForm() {
         setSubmitDisabled(false);  
         break;
       case 3:
-        // TODO do ai thing
+        // TODO do ai thing?
       case 2:
         setEditorVisible(true);
         setSubmitDisabled(false);
@@ -189,8 +185,8 @@ export default function ComplaintForm() {
 
       { editorVisible && <SuggestionList /> }
       {  mode === 5 && <ComplaintSelect minutes={minutes} setMinutes={setMinutes} /> }
-      {  mode === 4 && <Button className="ml-auto mr-auto flex items-center justify-center" onClick={handleInsultGen}>{ waiting && deathStar } Generate...</Button> }
-      { (mode === 4 && !!insult) && <div className="w-full mt-4 mb-2"><InsultViewer insult={insult} /></div> }
+      {  mode === 4 && <Button className="ml-auto mr-auto flex items-center justify-center !text-[var(--background)] !bg-[var(--hover-pink-light)] dark:hover:!bg-[var(--hover-pink-darker)] hover:!bg-[var(--hover-pink-darker)] dark:hover:!text-white]  hover:!text-white" onClick={handleInsultGen}>{ waiting && deathStarMini } Generate...</Button> }
+      { (mode === 4 && !!insult) && <div className="w-full mt-6 mb-6 text-center !h-16">{ waiting ? deathStarNotMini : <InsultViewer insult={insult} /> }</div> }
 
       <div className="ml-auto mr-auto w-100 flex justify-end">
         <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
