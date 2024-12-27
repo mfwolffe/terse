@@ -1,38 +1,22 @@
 "use client";
 
 import { affiliations } from "../data/data";
-import { useCallback, useEffect, useState } from "react";
-import TimedTransducer from "./TimedTransducer/TimedTransducer";
+import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import SuggestionList from "./UserFeedbackTable/UserFeedbackTable";
 import { faClock } from "@awesome.me/kit-361830ecc8/icons/duotone/light";
 
+import InsultViewer from "./InsultViewer/InsultViewer";
+import TimedTransducer from "./TimedTransducer/TimedTransducer";
+import SuggestionList from "./UserFeedbackTable/UserFeedbackTable";
 
-import { faSpaceStationMoonConstruction } from "@awesome.me/kit-361830ecc8/icons/duotone/solid";
-import { Button } from "flowbite-react";
 
+const clock = <FontAwesomeIcon icon={faClock} fontSize={14} shake />
 
-const clock             = <FontAwesomeIcon icon={faClock} fontSize={14} shake />
-const deathStarMini     = <FontAwesomeIcon icon={faSpaceStationMoonConstruction} fade className="self-center mr-2" />
-const deathStarNotMini  = <FontAwesomeIcon icon={faSpaceStationMoonConstruction} fade className="h-full" />
 
 interface ComplaintSelectProps {
   minutes: number;
   setMinutes: (minutes: number) => void;
 }
-
-interface InsultViewerProps {
-  insult: string;
-}
-
-const InsultViewer: React.FC<InsultViewerProps> = ({ insult }) => {
-  return (
-    <p className="text-4xl text-[var(--form-invalid)] text-center">
-      { insult }
-    </p>
-  )
-}
-
 
 const ComplaintSelect: React.FC<ComplaintSelectProps> = ({ minutes=-1, setMinutes }) => {
   const handleMinutesChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -74,16 +58,12 @@ const ComplaintSelect: React.FC<ComplaintSelectProps> = ({ minutes=-1, setMinute
 }
 
 export default function ComplaintForm() {
-
   const [mode, setMode] = useState(-1);
   const [insult, setInsult] = useState('');
   const [minutes, setMinutes] = useState(-1);
-  const [waiting, setWaiting] = useState(false);
-  const [editorVisible, setEditorVisible] = useState(false);
   const [submitDisabled, setSubmitDisabled] = useState(true);
+  const [suggesterVisible, setSuggesterVisible] = useState(false);
 
-  
-  const handleInsultGen = useCallback(() => { setWaiting(true); }, []);
 
   function handleModeSelect(e: React.ChangeEvent<HTMLSelectElement>) {
     if (!e) return;    
@@ -96,17 +76,17 @@ export default function ComplaintForm() {
       case 5:
         setMinutes(3);
       case 1:
-        setEditorVisible(false);
+        setSuggesterVisible(false);
         setSubmitDisabled(false);  
         break;
       case 3:
         // TODO do ai thing?
       case 2:
-        setEditorVisible(true);
+        setSuggesterVisible(true);
         setSubmitDisabled(false);
         break;
       case 4:
-        setEditorVisible(false);
+        setSuggesterVisible(false);
         setSubmitDisabled(false);
         break;
       default:
@@ -114,31 +94,9 @@ export default function ComplaintForm() {
     }
   }, [mode]);
 
-  useEffect(() => {
-    if (!waiting) return;
-
-    const grabInsult = async () => {
-      try {
-        const response  = await fetch("https://insult.mattbas.org/api/insult.json?who=matt%27s+writing");
-        const result    = await response.json();
-
-        setInsult(result.insult);
-      } catch (error) {
-        console.error('fetching insult:', error);
-      }
-    };
-
-    grabInsult();
-  }, [waiting]);
-
-  useEffect(() => {
-    if (!insult) return;
-    setWaiting(false);    
-  }, [insult]);
-
 
   return (
-    <form className="w-100 mb-8 mt-8">
+    <form className="w-100 mb-12 mt-8">
       <div className="mb-8">
         <div className="grid md:grid-cols-2 md:gap-6">
           <div className="relative z-0 w-full mb-5 group">
@@ -158,7 +116,6 @@ export default function ComplaintForm() {
             <label htmlFor="affiliation" className="peer-focus:font-medium absolute text-sm text-slate-50 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-amber-500 peer-focus:dark:text-amber-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Affiliation</label>
           </div>
         </div>
-
 
         <div className="grid md:grid-cols-2 md:gap-6">
           <div className="relative z-0 w-full mb-5 group">
@@ -183,17 +140,16 @@ export default function ComplaintForm() {
       </div>
 
 
-      { editorVisible && <SuggestionList /> }
-      {  mode === 5 && <ComplaintSelect minutes={minutes} setMinutes={setMinutes} /> }
-      {  mode === 4 && <Button className="ml-auto mr-auto flex items-center justify-center !text-[var(--background)] !bg-[var(--hover-pink-light)] dark:hover:!bg-[var(--hover-pink-darker)] hover:!bg-[var(--hover-pink-darker)] dark:hover:!text-white]  hover:!text-white" onClick={handleInsultGen}>{ waiting && deathStarMini } Generate...</Button> }
-      { (mode === 4 && !!insult) && <div className="w-full mt-6 mb-6 text-center !h-16">{ waiting ? deathStarNotMini : <InsultViewer insult={insult} /> }</div> }
+      { suggesterVisible && <SuggestionList /> }
+      { mode === 5 && <ComplaintSelect minutes={minutes} setMinutes={setMinutes} /> }
+      { mode === 4 && <InsultViewer insult={insult} setInsult={setInsult} /> }
+
 
       <div className="ml-auto mr-auto w-100 flex justify-end">
         <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
           Submit
         </button>
       </div>
-
     </form>
   );
 }
