@@ -49,6 +49,11 @@
 
   --hover-pink-darker: #824A53;
 
+  --deep-red: #c81e1e;
+
+  --modal-link-unvisit: rgba(0, 16, 255, 0.74);
+  --modal-link-unvisit-hover: rgba(0, 16, 255, 1);
+
 }
 
 /* TODO color scheme things * media queries */
