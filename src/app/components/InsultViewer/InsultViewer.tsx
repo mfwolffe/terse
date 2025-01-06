@@ -69,11 +69,11 @@ const InsultViewer: React.FC<InsultViewerProps> = ({ insult, setInsult }) => {
   useEffect(() => {
     if (!waiting) return;
 
-    let template = grabTemplate();
-
+    const template = grabTemplate();
+    
     const grabInsult = async () => {
       try {
-        const response  = await fetch(`https://insult.mattbas.org/api/insult.json?template=${template}`);
+        const response  = await fetch(`https://insult.mattbas.org/api/insult.json?${sanitize ? 'who=matt%27s+writing&lang=en_corporate' : `template=${template}`}`);
         const result    = await response.json();
 
         setInsult(result.insult);
