@@ -1,7 +1,7 @@
 ## Want to make your own goofy site like this?
 It's Next.js bootstrapped with create-next-app. Typescript and Tailwind.
 
-Right now I'm just handling formdata with formspree so that I can persist it there until I decide a better option.
+**Right now I'm just handling formdata with formspree so that I can persist it there until I decide a better option.**
 
 #### making your own
 Do all the git things: fork, etc.
