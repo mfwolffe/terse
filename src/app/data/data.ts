@@ -56,10 +56,12 @@ const sources = [
 ];
 
 const insultTemplates = [
-  " matt's writing is <adjective>. Simply put. ",
-  " look at this <adjective> email from matt. It's <adjective>. ",
-  " I'd rather eat <animal> <animal_parts> than read one of matt's <adjective> emails.",
-  " Whenever I read one of those <adjective> emails from matt I feel like I've inhaled rotting <animal> <animal_parts> and am going to pass out. ",
+  " matt%27s+writing+is+%3Cadjective%3E.+Simply+put. ",
+  " look+at+this+%3Cadjective%3E+email+from+matt.+It%27s+%3Cadjective%3E. ",
+  " Dude+check+this+%3Cadjective%3E+letter+out.+Bro+thinks+I%27v++got+all+day. ",
+  " I%27d+rather+eat+%3Canimal%3E+%3Canimal_part%3E+than+read+one+of+matt%27s+%3Cadjective%3E+emails. ",
+  " oh+great,+one+of+those+%3Cadjective%3E+3+page+emails+from+matt.+I%27m+going+out+of+state+y%27a+ll. ",
+  " Whenever+I+read+one+of+those+%3Cadjective%3E+emails+from+matt+I+feel+like+I%27ve+inhaled+rotting+%3Canimal%3E+%3Canimal_part%3E+and+am+going+to+pass+out. ",
 ];
 
 
