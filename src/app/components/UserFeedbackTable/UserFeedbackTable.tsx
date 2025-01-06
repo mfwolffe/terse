@@ -60,10 +60,7 @@ function SuggestionList() {
   const handleAddNew = useCallback(() => {
     const lastSuggestion = suggestions[suggestions.length - 1];
 
-    if (!lastSuggestion.mattText.trim() || !lastSuggestion.userText.trim()) {
-      alert("Please fill in all text areas before adding a new row.");
-      return;
-    }
+    if (!lastSuggestion.mattText.trim() || !lastSuggestion.userText.trim()) return;
 
     setSuggestions((prev) => [...prev, { id: prev.length, mattText: "", userText: "" }]);
   }, [suggestions]);
