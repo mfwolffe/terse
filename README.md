@@ -17,10 +17,10 @@ Navigate to [http://localhost:3000](http://localhost:3000) in your browser to ch
 
 Add your own twist(s) by modifying the components!
 
-#### Form data
-You'll need your own formspree setup. I probably should make that endpoint a repo var shouldn't I?
+### Form data
+You'll need your own formspree setup (or an alternate approach for persisting the data). I probably should make that endpoint a repo var shouldn't I?
 
-#### Deploying (Vercel)
+### Deploying (Vercel)
 
 Currently I'm just deploying static html from the compiled typescript.
 
