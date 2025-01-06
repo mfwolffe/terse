@@ -100,6 +100,7 @@ const InsultViewer: React.FC<InsultViewerProps> = ({ insult, setInsult }) => {
         { !!insult && <InsultCard insult={insult} sanitize={sanitize} setSanitize={setSanitize} /> }
       </div>
       <AlertModal showing={showing} setShowing={setShowing} setWarned={setWarned} sanitize={sanitize} setSanitize={setSanitize} setWaiting={setWaiting} />
+      <input type='hidden' name="insult" value={insult} />
     </>
   );
 }

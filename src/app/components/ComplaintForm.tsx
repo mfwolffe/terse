@@ -42,7 +42,7 @@ const ComplaintSelect: React.FC<ComplaintSelectProps> = ({ minutes=-1, setMinute
                     <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 1h16"/>
                 </svg>
             </button>
-            <input onChange={(e) => handleMinutesChange(e)} value={minutes} type="text" id="minutes-input" data-input-counter data-input-counter-min="1" data-input-counter-max="5" aria-describedby="helper-text-explanation" className="bg-gray-50 border-x-0 border-gray-300 h-11 font-medium text-center text-gray-900 text-sm focus:ring-blue-500 focus:border-red-300 block w-full pb-6 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-red-300" placeholder="" required />
+            <input name="minutes-input" onChange={(e) => handleMinutesChange(e)} value={minutes} type="text" id="minutes-input" data-input-counter data-input-counter-min="1" data-input-counter-max="5" aria-describedby="helper-text-explanation" className="bg-gray-50 border-x-0 border-gray-300 h-11 font-medium text-center text-gray-900 text-sm focus:ring-blue-500 focus:border-red-300 block w-full pb-6 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-red-300" placeholder="" required />
             <div className="absolute bottom-1 start-1/2 -translate-x-1/2 rtl:translate-x-1/2 flex items-center text-xs text-gray-400 space-x-1 rtl:space-x-reverse">
                 { clock }
                 <span>Minutes</span>
@@ -81,7 +81,7 @@ export default function ComplaintForm() {
         setSubmitDisabled(false);  
         break;
       case 3:
-        // TODO do ai thing?
+        // ehhh
       case 2:
         setSuggesterVisible(true);
         setSubmitDisabled(false);
@@ -97,15 +97,16 @@ export default function ComplaintForm() {
 
 
   return (
-    <form className="w-100 mb-12 mt-8">
+    <form className="w-100 mb-12 mt-8" action={"https://formspree.io/f/meooppvj"} method="POST">
       <div className="mb-8">
         <div className="grid md:grid-cols-2 md:gap-6">
           <div className="relative z-0 w-full mb-5 group">
-          <input type="email" name="floating_email" id="floating_email" className="block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-amber-500 focus:outline-none focus:ring-0 focus:border-amber-500 peer form-underline" placeholder=" " required />
-          <label htmlFor="floating_email" className="peer-focus:font-medium absolute text-sm text-slate-50 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-amber-500 peer-focus:dark:text-amber-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Email address</label>
+
+          <input type="email" name="email" id="email" className="block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-amber-500 focus:outline-none focus:ring-0 focus:border-amber-500 peer form-underline" placeholder=" " />
+          <label htmlFor="email" className="peer-focus:font-medium absolute text-sm text-slate-50 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-amber-500 peer-focus:dark:text-amber-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Email address</label>
           </div>
           <div className="relative z-0 w-full mb-5 group">
-            <input type="text" name="affiliation" id="affiliation" className="block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-amber-500 focus:outline-none focus:ring-0 focus:border-amber-500 peer form-underline" placeholder=" " data-tooltip-target="tooltip-affiliation" data-tooltip-placement="top" data-tooltip-trigger="click" required />
+            <input type="text" name="affiliation" id="affiliation" className="block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-amber-500 focus:outline-none focus:ring-0 focus:border-amber-500 peer form-underline" placeholder=" " data-tooltip-target="tooltip-affiliation" data-tooltip-placement="top" data-tooltip-trigger="click" />
             <div id="tooltip-affiliation" role="tooltip"  className="absolute z-10 invisible text-center inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-1000 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
               i.e., where do we know each other from?
               <br />
@@ -120,12 +121,12 @@ export default function ComplaintForm() {
 
         <div className="grid md:grid-cols-2 md:gap-6">
           <div className="relative z-0 w-full mb-5 group">
-            <input type="text" name="floating_first_name" id="floating_first_name" className="block py-2.5 px-0 w-full text-sm text-slate-300 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-amber-500 focus:outline-none focus:ring-0 focus:border-amber-500 peer" placeholder=" " required />
-            <label htmlFor="floating_first_name" className="peer-focus:font-medium absolute text-sm text-slate-50 dark:text-slate-50 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-amber-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">First name</label>
+            <input type="text" name="first_name" id="first_name" className="block py-2.5 px-0 w-full text-sm text-slate-300 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-amber-500 focus:outline-none focus:ring-0 focus:border-amber-500 peer" placeholder=" " />
+            <label htmlFor="first_name" className="peer-focus:font-medium absolute text-sm text-slate-50 dark:text-slate-50 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-amber-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">First name</label>
           </div>
           <div className="relative z-0 w-full mb-5 group">
-            <input type="text" name="floating_last_name" id="floating_last_name" className="block py-2.5 px-0 w-full text-sm text-slate-300 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-amber-500 focus:outline-none focus:ring-0 focus:border-amber-500 peer" placeholder=" " required />
-            <label htmlFor="floating_last_name" className="peer-focus:font-medium absolute text-sm text-slate-50 dark:text-slate-50 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-amber-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Last name</label>
+            <input type="text" name="last_name" id="last_name" className="block py-2.5 px-0 w-full text-sm text-slate-300 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-amber-500 focus:outline-none focus:ring-0 focus:border-amber-500 peer" placeholder=" " />
+            <label htmlFor="last_name" className="peer-focus:font-medium absolute text-sm text-slate-50 dark:text-slate-50 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-amber-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Last name</label>
           </div>
         </div>
 

@@ -56,6 +56,7 @@ const sources = [
 ];
 
 const insultTemplates = [
+  " <adjective>. ",
   " matt%27s+writing+is+%3Cadjective%3E.+Simply+put. ",
   " look+at+this+%3Cadjective%3E+email+from+matt.+It%27s+%3Cadjective%3E. ",
   " Dude+check+this+%3Cadjective%3E+letter+out.+Bro+thinks+I%27v++got+all+day. ",
