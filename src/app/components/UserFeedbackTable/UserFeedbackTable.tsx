@@ -3,7 +3,6 @@
 import { Suggestion } from "@/types";
 
 import { List } from "flowbite-react";
-import { Button } from "flowbite-react";
 import { useCallback, useState } from "react";
 import { Label, Textarea } from "flowbite-react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -22,7 +21,7 @@ const SuggestionRow: React.FC<{ suggestion: Suggestion; onChange: (id: number, n
         <div className="mb-2 block">
           <Label htmlFor={`mattText-${suggestion.id}`} value="What matt wrote:" className="text-[var(--form-invalid)] font-medium" />
         </div>
-        <Textarea id={`mattText-${suggestion.id}`} className="w-[98%]  ml-auto mr-auto" />
+        <Textarea id={`mattText-${suggestion.id}`} name={`mattText-${suggestion.id}`} className="w-[98%]  ml-auto mr-auto" required />
       </div>
 
       <div className="basis-1/2">
@@ -33,7 +32,7 @@ const SuggestionRow: React.FC<{ suggestion: Suggestion; onChange: (id: number, n
             className="text-[var(--form-valid-muted)] font-medium"
           />
         </div>
-        <Textarea id={`userText-${suggestion.id}`} className="w-[98%] ml-auto mr-auto" />
+        <Textarea id={`userText-${suggestion.id}`} name={`userText-${suggestion.id}`} className="w-[98%] ml-auto mr-auto" required />
       </div>
     </List.Item>
   );
