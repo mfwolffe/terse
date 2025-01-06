@@ -1,6 +1,9 @@
 ## Want to make your own goofy site like this?
 It's Next.js bootstrapped with create-next-app. Typescript and Tailwind.
 
+Right now I'm just handling formdata with formspree so that I can persist it there until I decide a better option.
+
+#### making your own
 Do all the git things: fork, etc.
 
 Once cloned, run the dev server:
@@ -12,21 +15,16 @@ npm run dev
 
 Navigate to [http://localhost:3000](http://localhost:3000) in your browser to check out the site. Changes made to code reflect live in the browser upon save.
 
-Add your own twist(s) by modifying: (I added more components - this list is old. just check out the codebase)
-* `app/page.tsx` for main text content
-* `app/components/Transducer.tsx` for the randomized technobabble sentence
-* `app/components/ComplaintForm.tsx` for the form controls and their presentation
-* `app/components/Typewriter/Typewriter.tsx` & its css module for typewriter animation effect changes
+Add your own twist(s) by modifying the components!
 
-Within `utils/common.ts` are some common helpers I find myself having to rewrite all the time.
+#### Form data
+You'll need your own formspree setup. I probably should make that endpoint a repo var shouldn't I?
 
-## Deploying (Vercel)
+#### Deploying (Vercel)
 
 Currently I'm just deploying static html from the compiled typescript.
 
-See [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for details or if you want to be fancy. I intend to have a backend for the form data probably at some point, so static is temporary.
-
-`npm run build` is the command.
+`npm run build` is the command locally.
 
 I'm Hosting with github pages & a domain I own because I'm lazy and thought that would be fastest. If you want to do the same and end up using environment variables/tokens of your own and can't figure out the build & workflow, shoot me a message 📯
 
