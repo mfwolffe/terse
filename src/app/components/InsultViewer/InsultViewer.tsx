@@ -10,7 +10,9 @@ import { faSpaceStationMoonConstruction } from "@awesome.me/kit-361830ecc8/icons
 
 import styles from './InsultViewer.module.css'
 import AlertModal from '../AlertModal/AlertModal';
+import { insultTemplates } from '@/app/data/data';
 
+import { randIntLeftInclusiveRange as randInt } from '@/app/utils/common';
 
 interface InsulterProps {
   insult: string;
@@ -31,6 +33,9 @@ interface InsultCardProps {
 const corporateNotMini = <FontAwesomeIcon icon={faBriefcase} color='var(--background)' />
 const corporateMini    = <FontAwesomeIcon icon={faBriefcase} fade className="self-center mr-2" />
 const deathStarMini    = <FontAwesomeIcon icon={faSpaceStationMoonConstruction} fade className="self-center mr-2" />
+
+const grabTemplate = () => insultTemplates[randInt(0, insultTemplates.length)];
+
 
 const Insulter: React.FC<InsulterProps> = ({ insult }) => {
   return (
@@ -64,9 +69,11 @@ const InsultViewer: React.FC<InsultViewerProps> = ({ insult, setInsult }) => {
   useEffect(() => {
     if (!waiting) return;
 
+    let template = grabTemplate();
+
     const grabInsult = async () => {
       try {
-        const response  = await fetch("https://insult.mattbas.org/api/insult.json?who=matt%27s+writing");
+        const response  = await fetch(`https://insult.mattbas.org/api/insult.json?template=${template}`);
         const result    = await response.json();
 
         setInsult(result.insult);
