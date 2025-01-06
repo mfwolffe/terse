@@ -55,9 +55,17 @@ const sources = [
   " utilize the ethereal essence of aetherial harmonics ",
 ];
 
+const insultTemplates = [
+  " matt's writing is <adjective>. Simply put. ",
+  " look at this <adjective> email from matt. It's <adjective>. ",
+  " I'd rather eat <animal> <animal_parts> than read one of matt's <adjective> emails.",
+  " Whenever I read one of those <adjective> emails from matt I feel like I've inhaled rotting <animal> <animal_parts> and am going to pass out. ",
+];
+
 
 export {
   sources,
   affiliations,
   technologies,
+  insultTemplates,
 };
