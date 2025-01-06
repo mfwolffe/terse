@@ -134,7 +134,6 @@ export default function ComplaintForm() {
           <option value="0" disabled>Feedback Type</option>
           <option value="1">Log it (for metrics!)</option>
           <option value="2">Suggest Revisions - you write them</option>
-          <option value="3">Suggest Revisions - have an AI make suggestions</option>
           <option value="4">Complain - autogenerate a random insult for matt</option>
           <option value="5">Complain - just let me know how much of your time I wasted</option>
         </select>
